@@ -21,7 +21,7 @@ public class Pais
 
     public void update()
     {
-        for(int i = 0; i < people.Count(); i++)
+        for(int i = 0; i < people.Count; i++)
         {
 
         }
