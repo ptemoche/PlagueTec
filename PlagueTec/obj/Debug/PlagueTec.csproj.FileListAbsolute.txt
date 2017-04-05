@@ -4,3 +4,9 @@ d:\documentos\visual studio 2015\Projects\PlagueTec\PlagueTec\bin\Debug\PlagueTe
 d:\documentos\visual studio 2015\Projects\PlagueTec\PlagueTec\obj\Debug\PlagueTec.csprojResolveAssemblyReference.cache
 d:\documentos\visual studio 2015\Projects\PlagueTec\PlagueTec\obj\Debug\PlagueTec.exe
 d:\documentos\visual studio 2015\Projects\PlagueTec\PlagueTec\obj\Debug\PlagueTec.pdb
+D:\Documents\Visual Studio 2015\Projects\PlagueTec\PlagueTec\bin\Debug\PlagueTec.exe.config
+D:\Documents\Visual Studio 2015\Projects\PlagueTec\PlagueTec\obj\Debug\PlagueTec.exe
+D:\Documents\Visual Studio 2015\Projects\PlagueTec\PlagueTec\obj\Debug\PlagueTec.pdb
+D:\Documents\Visual Studio 2015\Projects\PlagueTec\PlagueTec\bin\Debug\PlagueTec.exe
+D:\Documents\Visual Studio 2015\Projects\PlagueTec\PlagueTec\bin\Debug\PlagueTec.pdb
+D:\Documents\Visual Studio 2015\Projects\PlagueTec\PlagueTec\obj\Debug\PlagueTec.csprojResolveAssemblyReference.cache
