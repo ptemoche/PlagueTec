@@ -1,0 +1,1 @@
+d:\documentos\visual studio 2015\Projects\PlagueTec\PlagueTec\bin\Debug\PlagueTec.exe.config
