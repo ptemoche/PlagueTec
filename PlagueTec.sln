@@ -5,6 +5,11 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlagueTec", "PlagueTec\PlagueTec.csproj", "{B0E24E5A-86EF-4B25-A0CA-C7C114F6D076}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{35129286-6DC0-4AEB-8EDD-DB0EE52B50CA}"
+	ProjectSection(SolutionItems) = preProject
+		Pais.cs = Pais.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
