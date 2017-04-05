@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace PlagueTec
 {
@@ -10,7 +11,25 @@ namespace PlagueTec
     {
         static void Main(string[] args)
         {
-            //hi
+            int fps = 4;
+            int time = 0;
+            int counterDay = 4;
+            int day = 0;
+
+
+            while (true)
+            {
+                uint initTime = (uint)DateTime.Now.Ticks;
+                Console.Clear();
+
+                day = day + ((++time%counterDay == 0)?1:0);
+
+                Console.Write("dia #{0}", day); 
+
+                uint milliSeconds = (uint)DateTime.Now.Ticks - initTime;
+                Thread.Sleep((1000 / fps) - new TimeSpan(milliSeconds).Milliseconds);
+
+            }
         }
     }
 }
