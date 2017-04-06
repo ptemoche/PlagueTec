@@ -46,12 +46,8 @@
     <Compile Include="Pais.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="capacidad.cs" />
-    <Compile Include="horario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ruta.cs" />
-    <Compile Include="tiempo.cs" />
-    <Compile Include="tipo.cs" />
     <Compile Include="transporte.cs" />
   </ItemGroup>
   <ItemGroup>
