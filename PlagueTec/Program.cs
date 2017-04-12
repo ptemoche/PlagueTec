@@ -32,6 +32,7 @@ namespace PlagueTec
                 test.update();
 
                 uint milliSeconds = (uint)DateTime.Now.Ticks - initTime;
+
                 Thread.Sleep((1000 / fps) - new TimeSpan(milliSeconds).Milliseconds);
 
             }
