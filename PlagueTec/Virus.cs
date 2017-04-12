@@ -8,32 +8,102 @@ namespace PlagueTec
 {
     class Virus
     {
+        public string name;
+        public float letalidad;
+        public float tiemp_de_reproduccion;
+        //sintoma sintomy; 
+        float tiempotrans;
 
-        string name;
-        float letalidad;
-        float tiemp_de_reproduccion;
-        float hereditario;
+        float vartimeinfect = 0; 
 
+        float porcent_virus = 0.0f ; 
+        bool infectado = false; 
+        
+        Person Persona = new Person(); 
 
 
         public Virus()
         {
-            this.name = "karius";
-            this.letalidad = 0;
-            this.tiemp_de_reproduccion = 0;
-            this.hereditario = 0.20f;
+            this.name = "k1r10";
 
+            Console.WriteLine("La letalidad que tiene esta persona es :" + letalidad);
+
+            this.letalidad = 1 - (Persona.resistencia )+vartimeinfect;
+            this.tiemp_de_reproduccion = 0;
+           
         }
 
         public void VirusAttack()
         {
-            /* if (letalidad=100)
-             persona=0*/
+            Random n = new Random((int)DateTime.Now.Ticks & 0X0000FFFF);
+
+            float x = Convert.ToSingle(n.NextDouble()); 
+
+            if(letalidad < x)
+            {
+                porcent_virus += 0.1f; 
+                
+            }
+             
+                           
+               
 
         }
-        public void infeccion ()
+       
+
+        public void Update()
         {
-           
+
+            TimeReproduccion();    
+                VirusAttack();
+                
+
+
+        }
+       
+        public void TimeReproduccion()
+        {
+            tiemp_de_reproduccion += 0.05f;
+
+            this.tiempotrans += 0.05f;
+
+            if(tiempotrans == 0.25f)
+            {
+                vartimeinfect += 0.05f; 
+                this.tiempotrans = 0.05f;
+
+            }
+
+        }
+
+        public void Sintomas()
+        {
+            string[] Grado1 = { "Sudoración", "Cansancio", "Dolor de Cabeza" };
+            string[] Grado2 = { "Vomito", "Desmayo" };
+            string[] Grado3 = { "Sangre por la Boca ", "Cangrena " };
+
+            Random n = new Random((int)DateTime.Now.Ticks & 0X0000FFFF);
+
+            if (porcent_virus <= 0.30 && porcent_virus >= 0.01 )
+            {
+
+                string name = Grado1[n.Next(Grado1.Length)];
+
+            }
+            else if (porcent_virus > 0.30 && porcent_virus <= 0.60)
+            {
+
+                string name = Grado2[n.Next(Grado2.Length)];
+            }
+            else if (porcent_virus > 0.60 )
+            {
+
+                string name = Grado3[n.Next(Grado3.Length)];
+            }
+
+            Console.WriteLine("La persona tiene " + name );
+
+            
         }
 
     }
