@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 d:\documentos\visual studio 2015\Projects\PlagueTec\PlagueTec\bin\Debug\PlagueTec.exe.config
 <<<<<<< Updated upstream
 d:\documentos\visual studio 2015\Projects\PlagueTec\PlagueTec\bin\Debug\PlagueTec.exe
@@ -13,3 +14,10 @@ D:\Documents\Visual Studio 2015\Projects\PlagueTec\PlagueTec\obj\Debug\PlagueTec
 D:\Documents\Visual Studio 2015\Projects\PlagueTec\PlagueTec\obj\Debug\PlagueTec.pdb
 D:\Documents\Visual Studio 2015\Projects\PlagueTec\PlagueTec\bin\Debug\PlagueTec.exe
 D:\Documents\Visual Studio 2015\Projects\PlagueTec\PlagueTec\bin\Debug\PlagueTec.pdb
+=======
+D:\Documentos\Visual Studio 2015\Projects\PlagueTec\PlagueTec\bin\Debug\PlagueTec.exe.config
+D:\Documentos\Visual Studio 2015\Projects\PlagueTec\PlagueTec\bin\Debug\PlagueTec.exe
+D:\Documentos\Visual Studio 2015\Projects\PlagueTec\PlagueTec\bin\Debug\PlagueTec.pdb
+D:\Documentos\Visual Studio 2015\Projects\PlagueTec\PlagueTec\obj\Debug\PlagueTec.exe
+D:\Documentos\Visual Studio 2015\Projects\PlagueTec\PlagueTec\obj\Debug\PlagueTec.pdb
+>>>>>>> 0e935546c96d204352a97347585dbfa6f6572713

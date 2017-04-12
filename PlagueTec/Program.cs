@@ -15,7 +15,10 @@ namespace PlagueTec
             int time = 0;
             int counterDay = 4;
             int day = 0;
+            transporte test = new transporte();
 
+
+            Person girl = new Person();
 
             while (true)
             {
@@ -24,7 +27,9 @@ namespace PlagueTec
 
                 day = day + ((++time%counterDay == 0)?1:0);
 
-                Console.Write("dia #{0}", day); 
+                Console.Write("dia #{0}", day);
+                girl.update();
+                test.update();
 
                 uint milliSeconds = (uint)DateTime.Now.Ticks - initTime;
                 Thread.Sleep((1000 / fps) - new TimeSpan(milliSeconds).Milliseconds);
@@ -33,3 +38,10 @@ namespace PlagueTec
         }
     }
 }
+
+
+
+
+
+
+

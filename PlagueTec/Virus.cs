@@ -8,6 +8,7 @@ namespace PlagueTec
 {
     class Virus
     {
+<<<<<<< HEAD
         string name;
         float letalidad;
         float tiemp_de_reproduccion;
@@ -34,5 +35,7 @@ namespace PlagueTec
         {
            
         }
+=======
+>>>>>>> 0e935546c96d204352a97347585dbfa6f6572713
     }
 }

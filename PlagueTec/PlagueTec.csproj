@@ -43,9 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Virus.cs" />
+=======
+    <Compile Include="Pais.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="capacidad.cs" />
+>>>>>>> 0e935546c96d204352a97347585dbfa6f6572713
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="transporte.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
