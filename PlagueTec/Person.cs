@@ -23,7 +23,7 @@ namespace PlagueTec
         public bool can_pregnant;
         bool is_pregnant;
         int time_pregnant;
-        bool is_parto;
+        public bool is_parto;
         Virus virus;
         Random prob = new Random((int)DateTime.Now.Ticks & 0x0000FFFF);
         public bool is_died;
