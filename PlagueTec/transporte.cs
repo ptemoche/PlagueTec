@@ -21,6 +21,9 @@ namespace PlagueTec
         public int duracion;  //DURACIÓN DEL VIAJE  YA ESTÁ 
         public string ruta;     //SI ESTÁ HABILITADA O NO >:V' YA ESTÁ 
                                 // DURACIÓN ES (EJEMPLO DE LIMA A HUARAZ SON 7 HORAS)      TIEMPO ES (EJEM EL VIAJE DE LIMA A HUARAZ TARDÓ 8 HORAS)
+        List<Person> people;
+        public int rute_inicio;
+        public int rute_finish;
 
         Random n = new Random((int)DateTime.Now.Ticks & 0x0000FFFF); //
 
@@ -28,7 +31,32 @@ namespace PlagueTec
         {
             int num = n.Next(type_tipo.Length);   //número de pasajeros
             tipo = type_tipo[num];      /*para que eliga un transporte random de los atributor*/
-            capacidad = capacidades[num];
+            capacidad = capacidades[num]; //DEFINIR CUANTAS RUTAS DE TRANSPORTE SE CREA Y DE QUIÉN A QUIÉN VA
+            rute_inicio = 0;                                        // ESCOGER EL INCIO Y EL FIN DE LA RUTA >:V'!!!!!!!!!!!!!!
+            rute_finish = 4;
+        }
+
+        public void update_passengers()
+        {
+            int ind_person = 0;
+            foreach (Person persona in people)
+            {
+                persona.update();
+
+                if (persona.can_pregnant && (people[(ind_person + 1) % people.Count].gender == Person.type_person.hombre || people[(people.Count + ind_person - 1) % people.Count].gender == Person.type_person.hombre))
+                    persona.embarazo();
+
+                if (persona.is_parto)
+                {
+                    Person baby = persona.parto();
+                    people.Insert(ind_person + 1, baby);
+                }
+                if (persona.is_died)
+                {
+                    people.Remove(persona);
+                }
+                ++ind_person;
+            }
 
         }
 
@@ -38,10 +66,10 @@ namespace PlagueTec
             {
                 finish_route = true;
                 //Pais destino que reciba los pasajero
+               
             }
-
-
-
+            
+            update_passengers();
 
             tiempo++;
         }
@@ -54,6 +82,8 @@ namespace PlagueTec
  * 2 SEGUN     1 MES
  * 1 SEGUND        15 DÍAS */
 
+
+   
 
 
 
