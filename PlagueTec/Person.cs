@@ -32,29 +32,40 @@ namespace PlagueTec
         {
             ticks = 0;
             edad = prob.Next(90);
-            gender = (type_person)(prob.Next()%2);
+            gender = (type_person)(prob.Next() % 2);
             is_died = false;
-            
+
 
 
         }
-        
 
-        /*public  void dead()
+
+        public void dead()
         {
             if (this.virus.letalidad == 1)
+            {
                 is_died = true;
-        }*/
+                virus = null;
+            }
+            if (edad > 90)
+            {
+                is_died = true;
+                virus = null;
+            }
+        }
 
-        public float resist() {
-            Console.WriteLine("La resistencia es "+ res_edad[edad / 30]);
-            return res_edad[edad/30];
-        
+        public float resist()
+        {
+            Console.WriteLine("La resistencia es " + res_edad[edad / 30]);
+            return res_edad[edad / 30];
+
         }
         public void update()
         {
+            if (is_died)
+                return;
             //Para cumplir años
-            if(ticks++ > 2)
+            if (ticks++ > 0)
             {
                 edad++;
                 ticks = 0;
@@ -62,18 +73,18 @@ namespace PlagueTec
 
 
 
-            Console.WriteLine("\n edad:{0}, gender:{1}, can_be_Pregnat:{2}",this.edad,this.gender,this.can_pregnant);
+            Console.WriteLine("\n edad:{0}, gender:{1}, can_be_Pregnat:{2}", this.edad, this.gender, this.can_pregnant);
             resist();
             puedeEmbarazo();
-            
+
 
 
         }
 
         public void puedeEmbarazo()
         {
-            
-            if (gender == type_person.mujer && edad>20 && edad<40 && prob.Next()>0.20 && !is_pregnant)
+
+            if (gender == type_person.mujer && edad > 20 && edad < 40 && prob.Next() > 0.20 && !is_pregnant)
             {
                 can_pregnant = true;
             }
@@ -82,7 +93,7 @@ namespace PlagueTec
         public void embarazo()
         {
             time_pregnant = 0;
-            is_pregnant = true; 
+            is_pregnant = true;
 
         }
 
