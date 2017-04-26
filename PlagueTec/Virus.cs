@@ -11,10 +11,12 @@ namespace PlagueTec
         public string name;
         public float letalidad;
         public float tiemp_de_reproduccion;
-        //sintoma sintomy; 
+        public int ticks; 
+
+        
         float tiempotrans;
 
-        float vartimeinfect = 0; 
+        float timeinfect = 0; 
 
         float porcent_virus = 0.0f ; 
         bool infectado = false;
@@ -25,26 +27,37 @@ namespace PlagueTec
         public Virus(Person _p)
         {
             this.name = "k1r10";
-
-            Console.WriteLine("La letalidad que tiene esta persona es :" + letalidad);
-
-            this.letalidad = 1 - (persona.resistencia )+vartimeinfect;
-            this.tiemp_de_reproduccion = 0;
             this.persona = _p;
+            ticks = 0; 
+
+            //Console.WriteLine("La letalidad que tiene esta persona es :" + letalidad);
+
+            this.letalidad = 1 - (persona.resistencia)+timeinfect;
+
+            this.tiemp_de_reproduccion = 0;
+            
         }
 
         public void VirusAttack()
         {
             Random n = new Random((int)DateTime.Now.Ticks & 0X0000FFFF);
 
-            float x = Convert.ToSingle(n.NextDouble()); 
-
-            if(letalidad < x)
+            float x = Convert.ToSingle(n.NextDouble());
+            this.letalidad = 1.0f - persona.resist(); //+ timeinfect;
+            Console.WriteLine("letalidad {0}, resistencia {1}, porcentaje {2}, variable {3}", this.letalidad,persona.resist(),this.porcent_virus, x);
+            
+            if (letalidad < x)
             {
-                porcent_virus += 0.1f; 
+                porcent_virus += 0.0175f; 
                 
             }
-             
+           
+            if (porcent_virus >= 1.0f)
+            {
+
+                persona.is_died = true; 
+
+            }
                            
                
 
@@ -63,48 +76,54 @@ namespace PlagueTec
        
         public void TimeReproduccion()
         {
-            tiemp_de_reproduccion += 0.05f;
+            //tiemp_de_reproduccion += 0.15f;
 
             this.tiempotrans += 0.05f;
 
-            if(tiempotrans == 0.25f)
+            if(tiempotrans >= 0.5f)
             {
-                vartimeinfect += 0.05f; 
-                this.tiempotrans = 0.05f;
+                //timeinfect += 0.05f; 
+                this.tiempotrans = -0.5f;
+                persona.is_contagious = true;
 
             }
 
         }
 
-        public void Sintomas()
-        {
-            string[] Grado1 = { "Sudoración", "Cansancio", "Dolor de Cabeza" };
-            string[] Grado2 = { "Vomito", "Desmayo" };
-            string[] Grado3 = { "Sangre por la Boca ", "Cangrena " };
 
-            Random n = new Random((int)DateTime.Now.Ticks & 0X0000FFFF);
 
-            if (porcent_virus <= 0.30 && porcent_virus >= 0.01 )
-            {
+        /*
+         public void Sintomas()
+         {
+             string[] Grado1 = { "Sudoración", "Cansancio", "Dolor de Cabeza" };
+             string[] Grado2 = { "Vomito", "Desmayo" };
+             string[] Grado3 = { "Sangre por la Boca ", "Cangrena " };
 
-                string name = Grado1[n.Next(Grado1.Length)];
+             Random n = new Random((int)DateTime.Now.Ticks & 0X0000FFFF);
 
-            }
-            else if (porcent_virus > 0.30 && porcent_virus <= 0.60)
-            {
+             if (porcent_virus <= 0.30 && porcent_virus >= 0.01 )
+             {
 
-                string name = Grado2[n.Next(Grado2.Length)];
-            }
-            else if (porcent_virus > 0.60 )
-            {
+                 string name = Grado1[n.Next(Grado1.Length)];
 
-                string name = Grado3[n.Next(Grado3.Length)];
-            }
+             }
+             else if (porcent_virus > 0.30 && porcent_virus <= 0.60)
+             {
 
-            Console.WriteLine("La persona tiene " + name );
+                 string name = Grado2[n.Next(Grado2.Length)];
+             }
+             else if (porcent_virus > 0.60 )
+             {
 
-            
-        }
+                 string name = Grado3[n.Next(Grado3.Length)];
+             }
 
+             Console.WriteLine("La persona tiene " + name );
+
+
+         }
+    */
     }
+
+    
 }

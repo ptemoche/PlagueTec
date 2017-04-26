@@ -28,6 +28,7 @@ namespace PlagueTec
         Random prob;
         public bool is_died;
         bool pario = false;
+        public bool is_contagious = false;
 
         public Person()
         {
@@ -36,7 +37,9 @@ namespace PlagueTec
             edad = prob.Next(18,60);
             gender = (type_person)(prob.Next() % 2);
             is_died = false;
-
+            if(prob.Next(20) > 10){
+                this.infection();
+            }
 
 
         }
@@ -44,11 +47,11 @@ namespace PlagueTec
 
         public void dead()
         {
-            if (virus!=null && this.virus.letalidad == 1)
+            /*if (virus!=null && this.virus.letalidad == 1)
             {
                 is_died = true;
                 virus = null;
-            }
+            }*/
             if (edad > 89)
             {
                 is_died = true;
@@ -75,12 +78,15 @@ namespace PlagueTec
                 return;
 
 
-            //Console.WriteLine("\n edad:{0}, gender:{1}, can_be_Pregnat:{2}, is_pregnat:{3}, time_pregnat:{4}", this.edad, this.gender, this.can_pregnant, this.is_pregnant,this.time_pregnant);
+            Console.WriteLine("\n edad:{0}, gender:{1}, virus:{2}, is_contagious:{3}", this.edad, this.gender, (virus!=null)?"infected":"saludable", this.is_contagious);
             resist();
             
             puedeEmbarazo();
             whilePregnant();
-
+            if (virus != null)
+            {
+                virus.Update();
+            }
 
 
         }
@@ -124,7 +130,7 @@ namespace PlagueTec
             this.pario = true;
 
             if (virus != null)
-                baby.virus = new Virus();
+                baby.virus = new Virus(this);
 
             return baby;
 

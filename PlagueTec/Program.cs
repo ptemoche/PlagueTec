@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +18,7 @@ namespace PlagueTec
 
             List<Pais> paises = new List<Pais>();
 
-            paises.Add(new Pais(3));
+            paises.Add(new Pais(5));
             
 
             while (true)
@@ -36,6 +36,8 @@ namespace PlagueTec
                     country.update();
 
                 }
+
+
 
 
 

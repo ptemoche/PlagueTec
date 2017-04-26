@@ -45,6 +45,12 @@ namespace PlagueTec
 
                 persona.update();
 
+                if (persona.is_contagious)
+                {
+                    people[(i + 1) % people.Count].infection();
+                    people[((people.Count+(i - 1)))%people.Count].infection();
+                }
+
                 if (!persona.is_pregnant && persona.can_pregnant && (people[(i + 1) % people.Count].gender == Person.type_person.hombre || people[(people.Count + i - 1) % people.Count].gender == Person.type_person.hombre))
                     persona.embarazo();
 
