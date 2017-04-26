@@ -36,7 +36,10 @@ namespace PlagueTec
                     Person baby = persona.parto();
                     people.Insert(ind_person+1,baby);
                 }
-
+                if (persona.is_died)
+                {
+                    people.Remove(persona);
+                }
                 ++ind_person;
             }
         }
