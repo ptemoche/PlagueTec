@@ -13,23 +13,34 @@ namespace PlagueTec
         {
             int fps = 4;
             int time = 0;
-            int counterDay = 4;
-            int day = 0;
-            transporte test = new transporte();
+            int counterMonth = 2;
+            int month = 0;
 
+            List<Pais> paises = new List<Pais>();
 
-            Person girl = new Person();
+            paises.Add(new Pais(3));
+            
 
             while (true)
             {
                 uint initTime = (uint)DateTime.Now.Ticks;
                 Console.Clear();
 
-                day = day + ((++time%counterDay == 0)?1:0);
+                month = month + ((++time%counterMonth == 0)?1:0);
 
-                Console.Write("dia #{0}", day);
-                girl.update();
-                test.update();
+                Console.Write("mes #{0}", month);
+                
+                foreach(Pais country in paises)
+                {
+
+                    country.update();
+
+                }
+
+
+
+
+
 
                 uint milliSeconds = (uint)DateTime.Now.Ticks - initTime;
 

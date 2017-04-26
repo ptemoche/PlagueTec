@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace PlagueTec
 {
@@ -21,26 +22,42 @@ namespace PlagueTec
             state = States.normal;
         }
 
+        public Pais(int num)
+        {
+            people = new List<Person>();
+            research = 0;
+            infected = 0;
+            state = States.normal;
+
+            for(int i = 0; i < num; ++i)
+            {
+                people.Add(new Person());
+                Thread.Sleep(1);
+            }
+        }
+
         public void update()
         {
-            int ind_person = 0;
-            foreach (Person persona in people)
+                        
+            for (int i = people.Count-1; i>-1;--i)
             {
+                Person persona = people[i];
+
                 persona.update();
 
-                if (persona.can_pregnant && (people[(ind_person + 1) % people.Count].gender == Person.type_person.hombre || people[(people.Count + ind_person - 1) % people.Count].gender == Person.type_person.hombre))
+                if (!persona.is_pregnant && persona.can_pregnant && (people[(i + 1) % people.Count].gender == Person.type_person.hombre || people[(people.Count + i - 1) % people.Count].gender == Person.type_person.hombre))
                     persona.embarazo();
 
                 if (persona.is_parto)
                 {
                     Person baby = persona.parto();
-                    people.Insert(ind_person+1,baby);
+                    people.Insert(i+1,baby);
                 }
                 if (persona.is_died)
                 {
-                    people.Remove(persona);
+                    people.RemoveAt(i);
                 }
-                ++ind_person;
+                
             }
         }
                         

@@ -17,20 +17,20 @@ namespace PlagueTec
         float vartimeinfect = 0; 
 
         float porcent_virus = 0.0f ; 
-        bool infectado = false; 
-        
-        Person Persona = new Person(); 
+        bool infectado = false;
+
+        Person persona; 
 
 
-        public Virus()
+        public Virus(Person _p)
         {
             this.name = "k1r10";
 
             Console.WriteLine("La letalidad que tiene esta persona es :" + letalidad);
 
-            this.letalidad = 1 - (Persona.resistencia )+vartimeinfect;
+            this.letalidad = 1 - (persona.resistencia )+vartimeinfect;
             this.tiemp_de_reproduccion = 0;
-           
+            this.persona = _p;
         }
 
         public void VirusAttack()

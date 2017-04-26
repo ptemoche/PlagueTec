@@ -21,17 +21,19 @@ namespace PlagueTec
         public float resistencia;
         public type_person gender;
         public bool can_pregnant;
-        bool is_pregnant;
+        public bool is_pregnant;
         int time_pregnant;
         public bool is_parto;
         Virus virus;
-        Random prob = new Random((int)DateTime.Now.Ticks & 0x0000FFFF);
+        Random prob;
         public bool is_died;
+        bool pario = false;
 
         public Person()
         {
+            prob = new Random((int)(DateTime.Now.Ticks & 0x0000FFFF));
             ticks = 0;
-            edad = prob.Next(90);
+            edad = prob.Next(18,60);
             gender = (type_person)(prob.Next() % 2);
             is_died = false;
 
@@ -42,12 +44,12 @@ namespace PlagueTec
 
         public void dead()
         {
-            if (this.virus.letalidad == 1)
+            if (virus!=null && this.virus.letalidad == 1)
             {
                 is_died = true;
                 virus = null;
             }
-            if (edad > 90)
+            if (edad > 89)
             {
                 is_died = true;
                 virus = null;
@@ -56,26 +58,28 @@ namespace PlagueTec
 
         public float resist()
         {
-            Console.WriteLine("La resistencia es " + res_edad[edad / 30]);
             return res_edad[edad / 30];
-
         }
         public void update()
         {
-            if (is_died)
-                return;
+            
             //Para cumplir años
-            if (ticks++ > 0)
+            if (ticks++ > 24)
             {
                 edad++;
                 ticks = 0;
             }
 
+            dead();
+            if (is_died)
+                return;
 
 
-            Console.WriteLine("\n edad:{0}, gender:{1}, can_be_Pregnat:{2}", this.edad, this.gender, this.can_pregnant);
+            //Console.WriteLine("\n edad:{0}, gender:{1}, can_be_Pregnat:{2}, is_pregnat:{3}, time_pregnat:{4}", this.edad, this.gender, this.can_pregnant, this.is_pregnant,this.time_pregnant);
             resist();
+            
             puedeEmbarazo();
+            whilePregnant();
 
 
 
@@ -84,7 +88,7 @@ namespace PlagueTec
         public void puedeEmbarazo()
         {
 
-            if (gender == type_person.mujer && edad > 20 && edad < 40 && prob.Next() > 0.20 && !is_pregnant)
+            if (!pario && gender == type_person.mujer && edad > 20 && edad < 40 && prob.Next() > 0.80 && !is_pregnant)
             {
                 can_pregnant = true;
             }
@@ -102,9 +106,10 @@ namespace PlagueTec
             if (is_pregnant)
             {
                 time_pregnant++;
-                if (time_pregnant > 72)
+                if (time_pregnant > 18)
                 {
                     is_pregnant = false;
+                    can_pregnant = false;
                     is_parto = true;
 
                 }
@@ -114,12 +119,20 @@ namespace PlagueTec
         public Person parto()
         {
             Person baby = new Person();
+            baby.edad = 0;
+            this.is_parto = false;
+            this.pario = true;
 
             if (virus != null)
                 baby.virus = new Virus();
 
             return baby;
 
+        }
+        public void infection()
+        {
+            this.virus = new Virus(this);
+            
         }
 
     }
