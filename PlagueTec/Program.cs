@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +30,8 @@ namespace PlagueTec
                 Console.Write("dia #{0}", day);
                 girl.update();
                 test.update();
+
+
 
                 uint milliSeconds = (uint)DateTime.Now.Ticks - initTime;
 
