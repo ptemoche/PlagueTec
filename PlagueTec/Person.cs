@@ -18,7 +18,6 @@ namespace PlagueTec
 
         public int edad;
         public int ticks;
-        public float resistencia;
         public type_person gender;
         public bool can_pregnant;
         public bool is_pregnant;
@@ -27,6 +26,7 @@ namespace PlagueTec
         Virus virus;
         Random prob;
         public bool is_died;
+        public bool died_for_virus = false;
         bool pario = false;
         public bool is_contagious = false;
 
@@ -37,7 +37,7 @@ namespace PlagueTec
             edad = prob.Next(18,60);
             gender = (type_person)(prob.Next() % 2);
             is_died = false;
-            if(prob.Next(20) > 10){
+            if(prob.Next(10) > 7){
                 this.infection();
             }
 
@@ -78,7 +78,7 @@ namespace PlagueTec
                 return;
 
 
-            Console.WriteLine("\n edad:{0}, gender:{1}, virus:{2}, is_contagious:{3}", this.edad, this.gender, (virus!=null)?"infected":"saludable", this.is_contagious);
+            //Console.WriteLine("\n edad:{0}, gender:{1}, virus:{2}, is_contagious:{3}", this.edad, this.gender, (virus!=null)?"infected":"saludable", this.is_contagious);
             resist();
             
             puedeEmbarazo();
@@ -130,15 +130,21 @@ namespace PlagueTec
             this.pario = true;
 
             if (virus != null)
-                baby.virus = new Virus(this);
+                baby.infection(); //new Virus(baby); Aqui hubo un error se le pasaba this cuando se le tiene que pasar virus mejor usar la funcion
 
             return baby;
 
         }
         public void infection()
         {
-            this.virus = new Virus(this);
+            if(this.virus == null)//si no posee el virus
+                this.virus = new Virus(this);
             
+        }
+
+        public bool isInfected()
+        {
+            return (virus != null);
         }
 
     }

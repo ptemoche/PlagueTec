@@ -16,10 +16,10 @@ namespace PlagueTec
         
         float tiempotrans;
 
-        float timeinfect = 0; 
+        float timeinfect; 
 
-        float porcent_virus = 0.0f ; 
-        bool infectado = false;
+        float porcent_virus; 
+       
 
         Person persona; 
 
@@ -28,11 +28,13 @@ namespace PlagueTec
         {
             this.name = "k1r10";
             this.persona = _p;
-            ticks = 0; 
+            this.porcent_virus = 0.0f;
+            ticks = 0;
+            timeinfect = 0;
 
             //Console.WriteLine("La letalidad que tiene esta persona es :" + letalidad);
 
-            this.letalidad = 1 - (persona.resistencia)+timeinfect;
+            this.letalidad = 1.0f - (persona.resist())+timeinfect;
 
             this.tiemp_de_reproduccion = 0;
             
@@ -44,18 +46,19 @@ namespace PlagueTec
 
             float x = Convert.ToSingle(n.NextDouble());
             this.letalidad = 1.0f - persona.resist(); //+ timeinfect;
-            Console.WriteLine("letalidad {0}, resistencia {1}, porcentaje {2}, variable {3}", this.letalidad,persona.resist(),this.porcent_virus, x);
             
-            if (letalidad < x)
+            if (letalidad > x)//tiene que ser mayor para q la probabilidad aumente con mayor letalidad
             {
-                porcent_virus += 0.0175f; 
+                this.porcent_virus += 0.0175f; 
                 
             }
-           
-            if (porcent_virus >= 1.0f)
+            //Console.WriteLine("letalidad {0}, resistencia {1}, porcentaje {2}, variable {3} bool:{4}", this.letalidad, persona.resist(), this.porcent_virus, x, (letalidad > x));
+
+            if (this.porcent_virus >= 1.0f)
             {
 
-                persona.is_died = true; 
+                persona.is_died = true;
+                persona.died_for_virus = true;
 
             }
                            
