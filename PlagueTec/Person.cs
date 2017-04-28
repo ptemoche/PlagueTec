@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlagueTec
 {
-    class Person
+    public class Person
     {
         public enum type_person
         {

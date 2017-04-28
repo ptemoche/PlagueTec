@@ -13,7 +13,7 @@ namespace PlagueTec
         int population;
         int died_for_virus;
         int infected;
-        List<Person> people;
+        public List<Person> people;
         
         public Pais()
         {
